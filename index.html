@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>SteamStar</title>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Manrope', sans-serif;
+            background-color: #120D1A;
+            color: #FFFFFF;
+        }
+        .gradient-button {
+            background: linear-gradient(90deg, #8A2BE2 0%, #FF69B4 100%);
+        }
+        .input-field {
+            background-color: #1E1829;
+            border: 1px solid #3A304A;
+            border-radius: 0.5rem;
+            padding: 0.75rem 1rem;
+            color: #FFFFFF;
+        }
+        .input-field::placeholder {
+            color: #A097B0;
+        }
+        .input-field:focus {
+            outline: none;
+            border-color: #8A2BE2;
+        }
+        .info-icon {
+            color: #A097B0;
+            cursor: pointer;
+        }
+        .tab-button {
+            background-color: #1E1829;
+            border: 1px solid #3A304A;
+            border-radius: 0.5rem;
+            padding: 0.5rem 1rem;
+            color: #A097B0;
+        }
+        .tab-button.active {
+            background-color: #8A2BE2;
+            color: #FFFFFF;
+            border-color: #8A2BE2;
+        }
+        .payment-method {
+            background-color: #1E1829;
+            border: 1px solid #3A304A;
+            border-radius: 0.5rem;
+            padding: 1rem;
+            cursor: pointer;
+            transition: border-color 0.2s ease-in-out;
+        }
+        .payment-method:hover,
+        .payment-method.selected {
+            border-color: #8A2BE2;
+        }
+        .payment-method.selected .checkmark {
+            opacity: 1;
+        }
+        .checkmark {
+            opacity: 0;
+            color: #4CAF50;
+            transition: opacity 0.2s ease-in-out;
+        }
+        .game-card {
+            background-color: #1E1829;
+            border-radius: 0.5rem;
+            overflow: hidden;
+        }
+        .nav-button {
+            background-color: #1E1829;
+            color: #A097B0;
+            border-radius: 0.5rem;
+            padding: 0.5rem;
+        }
+        .nav-button:hover {
+            background-color: #3A304A;
+        }
+    </style>
+</head>
+<body class="bg-slate-900 text-white">
+<header class="container mx-auto px-4 py-6 flex justify-between items-center">
+    <div class="flex items-center space-x-2">
+        <span class="material-icons text-purple-500 text-3xl">local_fire_department</span>
+        <span class="text-2xl font-bold">STEAMSTAR</span>
+    </div>
+    <nav class="flex items-center space-x-6">
+        <a class="flex items-center space-x-1 text-gray-300 hover:text-white" href="#">
+            <span class="material-icons text-sm">games</span>
+            <span>Игры</span>
+            <span class="text-xs bg-purple-600 text-white px-1.5 py-0.5 rounded-sm">недоступные в РФ</span>
+        </a>
+        <a class="flex items-center space-x-1 text-gray-300 hover:text-white" href="#">
+            <span class="material-icons text-sm">apps</span>
+            <span>Все сервисы</span>
+        </a>
+        <a class="text-gray-300 hover:text-white" href="#">Отзывы</a>
+        <a class="flex items-center space-x-1 text-gray-300 hover:text-white" href="#">
+            <span class="material-icons text-sm">card_giftcard</span>
+            <span>Получить подарок</span>
+        </a>
+    </nav>
+</header>
+<main class="container mx-auto px-4 py-8">
+    <div class="text-center mb-8">
+        <h1 class="text-4xl font-bold mb-2">Пополнить баланс <span class="text-purple-500">STEAM</span> в России</h1>
+        <p class="text-gray-400">Моментальное и недорогое пополнение стим аккаунтов при поддержке надежных партнеров!</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+        <div class="bg-slate-800 p-6 rounded-lg shadow-xl space-y-6">
+            <div class="relative">
+                <span class="material-icons absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">person_outline</span>
+                <input class="input-field w-full pl-10" placeholder="Введите логин" type="text"/>
+            <a href="https://steamcommunity.com/id/me/tradeoffers/privacy#trade_offer_access_url"
+                <button class="absolute right-3 top-1/2 -translate-y-1/2 text-xs bg-slate-700 text-gray-300 px-2 py-1 rounded hover:bg-slate-600">Где взять логин?</button>
+            </div>
+            <p class="text-xs text-gray-400"> <a class="text-purple-400 hover:underline" href="#">Если у вас на этом аккаунте до этого не было пополнений прочтите гайд</a>.</p>
+            <div class="relative">
+                <span class="material-icons absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">currency_ruble</span>
+                <input class="input-field w-full pl-10" id="topUpAmount" placeholder="Введите сумму пополнения" type="number" min="0"/>
+                <span class="material-icons info-icon absolute right-3 top-1/2 -translate-y-1/2">info_outline</span>
+            </div>
+            <div class="flex space-x-2">
+                <button class="bg-slate-700 hover:bg-slate-600 text-gray-300 px-4 py-2 rounded-lg text-sm flex-1">300</button>
+                <button class="bg-slate-700 hover:bg-slate-600 text-gray-300 px-4 py-2 rounded-lg text-sm flex-1">1000</button>
+                <button class="bg-slate-700 hover:bg-slate-600 text-gray-300 px-4 py-2 rounded-lg text-sm flex-1">2000</button>
+                <button class="bg-red-600 text-white px-4 py-2 rounded-lg text-sm flex-1 relative">5000 <span class="absolute top-0 right-0 -mt-2 -mr-2 bg-red-500 text-white text-xs px-1.5 py-0.5 rounded-full">-5%</span></button>
+            </div>
+            <div class="relative">
+                <span class="material-icons absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">email</span>
+                <input class="input-field w-full pl-10" placeholder="Введите почту" type="email"/>
+                <span class="material-icons info-icon absolute right-3 top-1/2 -translate-y-1/2">info_outline</span>
+            </div>
+            <div class="flex">
+                <div class="relative flex-grow">
+                    <span class="material-icons absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">sell</span>
+                    <input class="input-field w-full pl-10 rounded-r-none" placeholder="Введите промокод" type="text"/>
+                </div>
+                <button class="bg-slate-700 hover:bg-slate-600 text-gray-300 px-6 py-3 rounded-r-lg text-sm">Получить</button>
+            </div>
+            <div class="flex items-center space-x-2">
+                <input checked="" class="form-checkbox h-5 w-5 text-purple-500 bg-slate-700 border-slate-600 rounded focus:ring-purple-500" id="terms" type="checkbox"/>
+                <label class="text-xs text-gray-400" for="terms">Я ознакомлен и согласен с <a class="text-purple-400 hover:underline" href="#">условиями пользовательского соглашения</a> и <a class="text-purple-400 hover:underline" href="#">правилами возврата</a></label>
+            </div>
+            <button id="topUpButton" class="gradient-button w-full py-3 rounded-lg text-lg font-semibold hover:opacity-90 transition-opacity">Пополнить баланс</button>
+        </div>
+        <div class="space-y-6">
+            <div class="bg-slate-800 p-6 rounded-lg shadow-xl space-y-3">
+                <div class="flex justify-between text-gray-300">
+                    <span>Заплатите:</span>
+                    <span id="paymentAmount">0.00 RUB</span>
+                </div>
+                <div class="flex justify-between font-semibold">
+                    <span>Получите на кошелек Steam:</span>
+                    <span id="receivedAmount">0.00 RUB</span>
+                </div>
+                <div class="flex justify-between text-gray-400 text-sm">
+                    <span class="flex items-center">Комиссия сервиса: <span class="material-icons info-icon text-base ml-1">info_outline</span></span>
+                    <span id="serviceFee">0.00 RUB</span>
+                </div>
+                <div class="flex justify-between text-gray-400 text-sm">
+                    <span class="flex items-center">Банковские издержки: <span class="material-icons info-icon text-base ml-1">info_outline</span></span>
+                    <span>0.00 RUB</span>
+                </div>
+                <div class="flex justify-between text-gray-400 text-sm">
+                    <span>Скидка по промокоду:</span>
+                    <span>0.00 RUB</span>
+                </div>
+            </div>
+            <div class="bg-slate-800 p-6 rounded-lg shadow-xl">
+                <p class="text-lg font-semibold mb-4">Способы оплаты:</p>
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+                    <div class="payment-method selected flex flex-col items-center justify-center text-center">
+                        <img alt="SBP logo" class="h-10 mb-2" src="https://i.postimg.cc/13dnr684/image.webp"/> 
+                        <span class="text-xs text-gray-300">СБП</span>
+                        <span class="text-xs text-gray-500">Российские карты</span>
+                        <span class="material-icons checkmark absolute top-2 right-2">check_circle</span>
+                    </div>
+                    <div class="payment-method flex flex-col items-center justify-center text-center relative">
+                        <img alt="Visa Mastercard Mir logos" class="h-10 mb-2" src="https://i.postimg.cc/W1LxFYn4/i-7.webp"/> 
+                        <span class="text-xs text-gray-300">VISA/MC/МИР</span>
+                        <span class="text-xs text-gray-500">Карты РФ</span>
+                        <span class="material-icons checkmark absolute top-2 right-2">check_circle</span>
+                   
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="absolute right-10 top-1/4 hidden xl:block"></div>
+    </div>
+</main>
+<button class="fixed bottom-6 right-6 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg flex items-center space-x-2 hover:bg-green-600 transition-colors">
+    <span class="material-icons">chat_bubble_outline</span>
+    <span>Есть проблема? Мы на связи!</span>
+</button>
+
+<script>
+    document.getElementById('topUpButton').addEventListener('click', function() {
+        const amount = parseFloat(document.getElementById('topUpAmount').value);
+        if (isNaN(amount) || amount <= 0) {
+            alert('Пожалуйста, введите корректную сумму.');
+            return;
+        }
+
+        const serviceFee = 115; // Фиксированная комиссия
+        const totalPayment = amount + serviceFee; // Общая сумма для оплаты
+        const receivedAmount = amount; // Сумма, которую пользователь получит на кошелек
+
+        // Обновление значений на странице
+        document.getElementById('paymentAmount').textContent = totalPayment.toFixed(2) + ' RUB';
+        document.getElementById('receivedAmount').textContent = receivedAmount.toFixed(2) + ' RUB';
+        document.getElementById('serviceFee').textContent = serviceFee.toFixed(2) + ' RUB';
+    });
+</script>
+
+</body>
+</html>
